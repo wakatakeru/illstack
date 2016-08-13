@@ -7,7 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if user_signed_in? %>
+    <%= link_to "プロフィール変更", edit_user_registration_path, :class => "btn btn-success btn-xs" %> 
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => "btn btn-danger btn-xs" %>
+  <% else %>
+    <%= link_to "サインイン", new_user_registration_path, :class => "btn btn-primary btn-xs" %> 
+    <%= link_to "ログイン", new_user_session_path, :class => "btn btn-success btn-xs" %>
+  <% end %>
 
+  <% if notice != nil %>
+    <p class="alert alert-info"><%= notice %></p>
+  <% end %>
+  
+  <% if alert != nil %>  
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+    
 <%= yield %>
 
 </body>
