@@ -5,16 +5,25 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width">
 </head>
 <body>
 <div class="container">  
-  <div class="row">
-  <% if user_signed_in? %>
-    <%= link_to "プロフィール変更", edit_user_registration_path, :class => "btn btn-success btn-xs" %> 
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => "btn btn-danger btn-xs" %>
+  <div class="col-xs-12">
+    <p>
+      <h1>illstack</h1>
+    </p>
+    <% if user_signed_in? %>
+    <p>
+      <%= link_to "プロフィール変更", edit_user_registration_path, :class => "btn btn-success" %> 
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => "btn btn-danger" %>
+      ログイン中: <%= current_user.email %>
+    </p>  
   <% else %>
-    <%= link_to "サインイン", new_user_registration_path, :class => "btn btn-primary btn-xs" %> 
-    <%= link_to "ログイン", new_user_session_path, :class => "btn btn-success btn-xs" %>
+    <p>
+      <%= link_to "サインイン", new_user_registration_path, :class => "btn btn-primary" %> 
+      <%= link_to "ログイン", new_user_session_path, :class => "btn btn-success" %>
+    </p>
   <% end %>
 
   <% if notice != nil %>
@@ -28,6 +37,6 @@
   <%= yield %>
 
   </div>
-</idv>
+  </div>
 </body>
 </html>
