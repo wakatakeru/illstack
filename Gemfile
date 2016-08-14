@@ -33,6 +33,9 @@ gem 'carrierwave'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails' 
+gem 'devise-bootstrap-views'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
