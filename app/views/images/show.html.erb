@@ -1,0 +1,19 @@
+<div class="panel panel-default devise-bs">
+  <div class="panel-heading">
+    <h4><%= @image.title %><h4>
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <%= @image.comment %>
+    </div>
+    <div class="form-group">
+      <%= link_to image_tag("#{@image.image}", :class => "img-responsive"), "#{@image.image}", :target => ["_blank"] %>
+    </div>
+    <% if @image.author_id == current_user.id %>
+    <div class="form-group">
+      <%= link_to "画像の情報を編集する", edit_image_path(params[:id]), :class => "btn btn-warning btn-lg btn-block" %>
+      <%= link_to "画像を削除する", image_path(params[:id]), :method => "delete", :class => "btn btn-danger btn-lg btn-block" %>
+    </div>
+    <% end %>
+  </div>
+</div>

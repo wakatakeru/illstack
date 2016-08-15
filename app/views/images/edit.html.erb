@@ -1,0 +1,24 @@
+<div class="panel panel-default devise-bs">
+  <div class="panel-heading">
+    <h4>編集<h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for @image do |f| %>
+    <div class="form-group">
+      <%= f.label "タイトル" %>
+      <%= f.text_field :title, :class => "form-control", :placeholder => "タイトル" %>
+    </div>
+    <div class="form-group">
+      <%= f.label "コメント" %>
+      <%= f.text_field :comment, :class => "form-control", :placeholder => "コメント" %>
+    </div>
+    <div class="form-group">
+      <%= f.label "画像" %>
+      <%= f.file_field :file, accept: "image/jpeg" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit :value => "変更", :class => "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>

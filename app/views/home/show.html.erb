@@ -1,2 +1,28 @@
-<h1>Home#show</h1>
-<p>Find me in app/views/home/show.html.erb</p>
+<div class="panel panel-default devise-bs">
+  <div class="panel-heading">
+    <h4><%= @user.email %>の詳細<h4>
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <h5>投稿作品</h5>
+      <table class="table">
+        <tread>
+          <th>タイトル</th>
+          <th>投稿日時</th>
+          <th>編集</th>
+          <th>削除</th>
+        </tread>
+        <tbody>
+          <% @image.each do |item| %>
+          <tr>
+            <td><%= link_to "#{item.title}", image_path(item.id) %></td>
+            <td><%= item.updated_at %></td>
+            <td><%= link_to "編集", edit_image_path(item.id), :class => "btn btn-warning btn-xs"%></td>
+            <td><%= link_to "削除", image_path(item.id), :method => "delete", :class => "btn btn-danger btn-xs"%></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
