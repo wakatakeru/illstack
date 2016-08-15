@@ -16,10 +16,13 @@
           <% if user_signed_in? %>
         <p>
             <%= link_to "ホーム", root_path, :class => "btn btn-default" %>
-            <%= link_to "プロフィール変更", edit_user_registration_path, :class => "btn btn-success" %> 
+            <%= link_to "マイページ", home_show_path, :class => "btn btn-success" %> 
+            <%= link_to "プロフィール変更", edit_user_registration_path, :class => "btn btn-warning" %> 
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => "btn btn-danger" %>
-            ログイン中: <%= current_user.email %>
         </p>  
+        <p>
+          ログイン中: <%= current_user.email %>
+        </p>
           <% else %>
         <p>
             <%= link_to "サインイン", new_user_registration_path, :class => "btn btn-primary" %> 

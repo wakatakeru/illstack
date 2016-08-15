@@ -1,11 +1,11 @@
 <p>
-  <%= link_to "画像を新規に投稿する", new_images_path, :class => "btn btn-primary btn-block "%>
+  <%= link_to "画像を新規に投稿する", new_image_path, :class => "btn btn-primary btn-block "%>
 </p>
 <hr>
 <% @images.each do |item| %>
 <p>
   <h3><%= item.title %></h3>
-  <%= link_to image_tag("#{item.thumbnail}"), image_path(item.id) %>
+  <%= link_to image_tag("#{item.thumbnail}", :class => "img-responsive"), image_path(item.id) %>
 </p>
 <hr>
 <% end %>

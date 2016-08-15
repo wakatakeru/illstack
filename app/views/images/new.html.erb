@@ -9,6 +9,10 @@
       <%= f.text_field :title, :class => "form-control", :placeholder => "タイトル" %>
     </div>
     <div class="form-group">
+      <%= f.label "コメント" %>
+      <%= f.text_field :comment, :class => "form-control", :placeholder => "コメント" %>
+    </div>
+    <div class="form-group">
       <%= f.label "画像" %>
       <%= f.file_field :file, accept: "image/jpeg" %>
     </div>

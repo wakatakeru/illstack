@@ -16,9 +16,10 @@ class ImagesController < ApplicationController
 
   def create
     image = Image.new
-    image.title = params['image']['title']
-    image.author_id = current_user
-
+    image.title   = params['image']['title']
+    image.comment = params['image']['comment']
+    image.author_id = current_user.id
+    
     file = params['image']['file']
     if file != nil
       content = file.read
@@ -31,12 +32,12 @@ class ImagesController < ApplicationController
 
       File.open("public/upload/thumbnail/#{Time.now.to_i}_#{current_user.id}.jpg", "wb") do |f|
         thumb = Magick::Image.from_blob(content).shift
-        f.write(thumb.resize_to_fill!(240, 120).to_blob)
+        f.write(thumb.resize_to_fill!(420, 210).to_blob)
       end
     end
     
     if image.save
-      redirect_to root_path, :notice => "投稿に成功しました"
+      redirect_to root_path, :notice => "投稿に成功しました。"
     else
       render new_image_path, :alert => "投稿に失敗しました。\n内容を確認してください。"
     end
@@ -46,9 +47,22 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
   end
 
-  def destroy
-    @image = Image.find(params[:id])
-    @image.destroy
+  def update
+    image = Image.find(params[:id])
+    image.title = params['image']['title']
+    if image.save
+      redirect_to root_path, :notice => "内容の変更に成功しました。"
+    else
+      render edit_image_path, :alert => "内容の変更に失敗しました。\n内容を確認してください。"
+    end
   end
   
+  def destroy
+    image = Image.find(params[:id])
+    if image.destroy
+      redirect_to root_path, :notice => "画像の削除に成功しました。"
+    else
+      render edit_image_path, :alert => "画像の削除に失敗しました。\n内容を確認してください。"
+    end
+  end  
 end
