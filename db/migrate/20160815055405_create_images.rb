@@ -3,6 +3,7 @@ class CreateImages < ActiveRecord::Migration
     create_table :images do |t|
       t.string :title
       t.text :image
+      t.text :thumbnail
       t.integer :author_id
       t.text :comment
 

@@ -1,2 +1,11 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<p>
+  <%= link_to "画像を新規に投稿する", new_images_path, :class => "btn btn-primary btn-block "%>
+</p>
+<hr>
+<% @images.each do |item| %>
+<p>
+  <h3><%= item.title %></h3>
+  <%= link_to image_tag(item.thumbnail), image_path(item.id) %>
+</p>
+<hr>
+<% end %>
