@@ -2,7 +2,7 @@
   <%= link_to "画像を新規に投稿する", new_image_path, :class => "btn btn-primary btn-block "%>
 </p>
 <hr>
-<% @images.each do |item| %>
+<% @images.reverse_each do |item| %>
 <p>
   <h3><%= item.title %></h3>
   <%= link_to image_tag("#{item.thumbnail}", :class => "img-responsive"), image_path(item.id) %>
