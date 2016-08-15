@@ -1,5 +1,7 @@
 <p>
-  <%= link_to "画像を新規に投稿する", new_image_path, :class => "btn btn-primary btn-block "%>
+  <%= link_to new_image_path, :class => "btn btn-primary btn-block" do %>
+    <span class="glyphicon glyphicon-file"></span>画像の新規投稿
+  <% end %>
 </p>
 <hr>
 <% @images.reverse_each do |item| %>
