@@ -16,22 +16,22 @@ class ImagesController < ApplicationController
 
   def create
     image = Image.new
-    image.tile = params['image']['title']
+    image.title = params['image']['title']
     image.author_id = current_user
 
     file = params['image']['file']
     if file != nil
       content = file.read
-      image.path      = "upload/content/#{Time.now.to_i}_#{current_user}.jpg"
-      image.thumbnail = "upload/thumbnail/#{Time.now.to_i}_#{current_user}.jpg"
+      image.image     = "/upload/content/#{Time.now.to_i}_#{current_user.id}.jpg"
+      image.thumbnail = "/upload/thumbnail/#{Time.now.to_i}_#{current_user.id}.jpg"
     
-      File.open("upload/content/#{Time.now.to_i}_#{current_user}.jpg", "wb") do |f|
+      File.open("public/upload/content/#{Time.now.to_i}_#{current_user.id}.jpg", "wb") do |f|
         f.write(content)
       end
 
-      File.open("upload/thumbnail/#{Time.now.to_i}_#{current_user}.jpg", "wb") do |f|
+      File.open("public/upload/thumbnail/#{Time.now.to_i}_#{current_user.id}.jpg", "wb") do |f|
         thumb = Magick::Image.from_blob(content).shift
-        f.write(thumb.resize_to_fill!(120, 120).to_blob)
+        f.write(thumb.resize_to_fill!(240, 120).to_blob)
       end
     end
     
@@ -50,10 +50,5 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     @image.destroy
   end
-
-
-
-
-
   
 end

@@ -5,7 +5,7 @@
 <% @images.each do |item| %>
 <p>
   <h3><%= item.title %></h3>
-  <%= link_to image_tag(item.thumbnail), image_path(item.id) %>
+  <%= link_to image_tag("#{item.thumbnail}"), image_path(item.id) %>
 </p>
 <hr>
 <% end %>
