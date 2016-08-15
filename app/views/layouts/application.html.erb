@@ -18,9 +18,15 @@
             <%= link_to root_path, :class => "btn btn-default" do %>
               <span class="glyphicon glyphicon-home"></span>
             <% end %>
-            <%= link_to "マイページ", home_show_path, :class => "btn btn-success" %> 
-            <%= link_to "プロフィール変更", edit_user_registration_path, :class => "btn btn-warning" %> 
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => "btn btn-danger" %>
+            <%= link_to home_show_path, :class => "btn btn-success" do %>
+              <span class="glyphicon glyphicon-user"></span>マイページ
+            <% end %>
+            <%= link_to edit_user_registration_path, :class => "btn btn-warning" do %>
+              <span class="glyphicon glyphicon-cog"></span>設定
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete, :class => "btn btn-danger" do %>
+              <span class="glyphicon glyphicon-log-out"></span>ログアウト
+            <% end %>
         </p>  
         <p>
           ログイン中: <%= current_user.email %>
