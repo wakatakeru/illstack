@@ -19,13 +19,13 @@
               <span class="glyphicon glyphicon-home"></span>
             <% end %>
             <%= link_to home_show_path, :class => "btn btn-success" do %>
-              <span class="glyphicon glyphicon-user"></span>マイページ
+              <span class="glyphicon glyphicon-user"></span> マイページ
             <% end %>
             <%= link_to edit_user_registration_path, :class => "btn btn-warning" do %>
-              <span class="glyphicon glyphicon-cog"></span>設定
+              <span class="glyphicon glyphicon-cog"></span> 設定
             <% end %>
             <%= link_to destroy_user_session_path, method: :delete, :class => "btn btn-danger" do %>
-              <span class="glyphicon glyphicon-log-out"></span>ログアウト
+              <span class="glyphicon glyphicon-log-out"></span> ログアウト
             <% end %>
         </p>  
         <p>
@@ -34,10 +34,10 @@
           <% else %>
         <p>
           <%= link_to new_user_registration_path, :class => "btn btn-primary" do %>
-            <span class="glyphicon glyphicon-check"></span>新規登録
+            <span class="glyphicon glyphicon-check"></span> 新規登録
           <% end %>
           <%= link_to new_user_session_path, :class => "btn btn-success" do %>
-            <span class="glyphicon glyphicon-log-in"></span>ログイン
+            <span class="glyphicon glyphicon-log-in"></span> ログイン
           <% end %>
         </p>
           <% end %>
