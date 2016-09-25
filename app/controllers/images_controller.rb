@@ -49,7 +49,8 @@ class ImagesController < ApplicationController
 
   def update
     image = Image.find(params[:id])
-    image.title = params['image']['title']
+    image.title   = params['image']['title']
+    image.comment = params['image']['comment']
     if image.save
       redirect_to root_path, :notice => "内容の変更に成功しました。"
     else
