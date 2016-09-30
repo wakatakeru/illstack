@@ -23,14 +23,14 @@ class ImagesController < ApplicationController
     file = params['image']['file']
     if file != nil
       content = file.read
-      image.image     = "/upload/content/#{Time.now.to_i}_#{current_user.id}.jpg"
-      image.thumbnail = "/upload/thumbnail/#{Time.now.to_i}_#{current_user.id}.jpg"
+      image.image     = "/upload/content/#{Time.now.to_i}_#{current_user.id}"
+      image.thumbnail = "/upload/thumbnail/#{Time.now.to_i}_#{current_user.id}"
     
-      File.open("public/upload/content/#{Time.now.to_i}_#{current_user.id}.jpg", "wb") do |f|
+      File.open("public/upload/content/#{Time.now.to_i}_#{current_user.id}", "wb") do |f|
         f.write(content)
       end
 
-      File.open("public/upload/thumbnail/#{Time.now.to_i}_#{current_user.id}.jpg", "wb") do |f|
+      File.open("public/upload/thumbnail/#{Time.now.to_i}_#{current_user.id}", "wb") do |f|
         thumb = Magick::Image.from_blob(content).shift
         f.write(thumb.resize_to_fill!(420, 210).to_blob)
       end
